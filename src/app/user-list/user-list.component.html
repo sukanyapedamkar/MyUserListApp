@@ -1,0 +1,26 @@
+  <div class="container">
+     <h2>User List</h2>
+     <!-- <a class="btn btn-link" routerLink="/add-user">Add User</a> -->
+     
+    <ul class="row">
+      <li *ngFor="let user of userList" class="col-md-6 col-sm-12">
+        <button type="button" class="close" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+       <div class="media rounded" [routerLink]="[user.id]">
+          <div class="media-img mr-3 rounded">
+            <img class="align-self-center" [src]="user.profilePic">
+          </div>
+          <div class="media-body">
+            <h5 class="mt-0">{{user?.firstName}} {{user?.lastName}}</h5>
+            <p>{{user?.email}}</p>
+            <p>{{user.address?.city}}</p>
+            <p>{{user.address?.state}}</p>
+            <p>{{user?.company.name}}</p>
+          </div>
+        </div>
+        
+      </li>
+  </ul>
+  </div>
+

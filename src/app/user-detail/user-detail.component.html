@@ -1,0 +1,27 @@
+<div class="container">
+    <div class="userDetail">
+      <div class="row">
+        <a [routerLink]="['../']" class="btn btn-link float-md-right">&lt; Back</a>
+    <h2>Hi I am {{user?.firstName}}</h2>
+</div>
+    <div class="row" >
+      <div class="col-sm-5 imgWrap">
+        <img [src]="user.profilePic" *ngIf="user.profilePic" class="img-responsive">
+      </div>
+        <div class="col-sm-7">
+          <p>First Name : {{user?.firstName}} </p>
+          <p>Last Name : {{user.lastName}}</p>
+          <p>Email : {{user?.email}}</p>
+          <address>
+            <p><span>City : </span>{{user?.address.city}}</p>
+            <p><span>Street : </span>{{user?.address.street}}</p>
+            <p><span>Zip Code : </span> {{user?.address.zip}}</p>
+            <p><span>Country : </span>{{user?.address.country}}</p>
+          </address>
+          <p><span>Company : </span>{{user?.company.name}}</p>
+          <p><span>Website : </span>{{user?.company.website}}</p>
+        </div>
+      </div>
+      </div>
+      
+  </div>

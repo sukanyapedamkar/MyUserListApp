@@ -1,0 +1,50 @@
+<div class="container">
+  <h2>{{title}}</h2>
+  <form  novalidate #userForm="ngForm">
+    <div class="form-group">
+      <label for="firstName">First Name</label>
+      <input #inputfName="ngModel" type="text" class="form-control" id="firstName" name="firstName" placeholder="Enter First Name" [(ngModel)]="user.firstName" minlength="4" required>
+      <div class="errors" *ngIf="inputfName.errors && (inputfName.dirty || inputfName.touched)">
+        <span [hidden]="!inputfName.errors.required">First Name is required</span>
+        <span [hidden]="!inputfName.errors.minlength">First Name should be more than 4 letters</span>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="lastName">Last Name</label>
+      <input #inputlName="ngModel" type="text" class="form-control" id="lastName" name="lastName" placeholder="Enter Last Name" [(ngModel)]="user.lastName" minlength="4" required>
+      <div class="errors" *ngIf="inputlName.errors && (inputlName.dirty || inputlName.touched)">
+        <span [hidden]="!inputlName.errors.required">Last Name is required</span>
+        <span [hidden]="!inputlName.errors.minlength">Last Name should be more than 4 letters</span>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="email">Email address</label>
+      <input #inputEmail="ngModel" type="email" class="form-control" id="email" name="email" placeholder="Enter Email" [(ngModel)]="user.email" pattern="[^@]+@[^\.]+\..+" required>
+      <div class="errors" *ngIf="inputEmail.errors && (inputEmail.dirty || inputEmail.touched)">
+        <span [hidden]="!inputEmail.errors.required">Email is required</span>
+        <span [hidden]="!inputEmail.errors.pattern">Enter valid email!</span>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="City">City</label>
+      <input #inputCity="ngModel" type="text" class="form-control" id="City" name="city" placeholder="Enter City" [(ngModel)]="user.address.city" required>
+      <div class="errors" *ngIf="inputCity.errors && (inputCity.dirty || inputCity.touched)">
+        <span [hidden]="!inputCity.errors.required">City is required</span>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="state">State</label>
+      <select class="form-control" id="state" name="state" [(ngModel)]="user.state" required>
+        <option *ngFor="let state of states" [value]="state">{{state}}</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="Company">Company</label>
+      <input #inputCompany="ngModel" type="text" class="form-control" id="Company" name="company" placeholder="Enter Company" [(ngModel)]="user.company.name" required>
+      <div class="errors" *ngIf="inputCompany.errors && (inputCompany.dirty || inputCompany.touched)">
+        <span [hidden]="!inputCompany.errors.required">Company is required</span>
+      </div>
+    </div>
+    <button type="submit" class="btn btn-primary" [disabled]="userForm.form.invalid" (click)="addUser()" routerLink="/users">Submit</button>
+  </form>
+</div>
